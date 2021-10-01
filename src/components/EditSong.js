@@ -8,7 +8,7 @@ import RhytmItems from './interfaceComponents/RhytmItems';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import axios from 'axios';
-import Loader from './main/Loader';
+import Loader from './main/Loader/Loader';
 
 class EditSongForm extends React.Component {
     constructor(props) {
