@@ -66,3 +66,9 @@
     color: #fff !important;
     font-weight: bold !important;
 }
+
+.chordPanel {
+    display: grid;
+    width: 600px;
+    grid-template-columns: repeat(4, 1fr);
+}

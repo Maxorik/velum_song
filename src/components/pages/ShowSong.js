@@ -11,12 +11,24 @@ import ChordScheme from "../main/DrawChord/ChordScheme";
 
 function ShowSong() {
 
-    // TODO обработка несуществующего аккорда
 
     return(
-        <div>{ChordScheme({
-            chordName: 'C'
-        })}</div>
+        <div>
+            <div className='chordPanel'>
+                <ChordScheme
+                    chordName = 'Am'
+                />
+                <ChordScheme
+                    chordName = 'C'
+                />
+                <ChordScheme
+                    chordName = 'G5'
+                />
+                <ChordScheme
+                    chordName = 'G115'
+                />
+            </div>
+        </div>
     )
 }
 
