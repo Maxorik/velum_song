@@ -48,7 +48,7 @@ function ChordScheme(props) {
     // аккорд валидный
     if(chordData) {
         const chordScheme = chordData.positions[0];  // информация об одном из способов зажима аккорда
-        const baseFret = chordScheme.baseFret > 1 ? chordScheme.baseFret + Lang.baseFret : '';  // лад, с которого берется ааккорд
+        const baseFret = chordScheme.baseFret > 1 ? chordScheme.baseFret: '';  // лад, с которого берется ааккорд
 
         // определяем, в каких местах зажимаются струны
         // TODO для поддержки укулеле меняется константа i<6
@@ -88,10 +88,10 @@ function ChordScheme(props) {
         }
 
         return (
-            <div>
+            <div style={{marginLeft: '-20px'}}>
                 {!chordData ? null :
                     // TODO параметры viewBox должны масштабироваться
-                    <svg width="150" height="150" viewBox="0 0 93 93">
+                    <svg width="100" height="100" viewBox="0 0 93 93">
                         <g transform="translate(20, 20)">
                             <g>
                                 <path stroke="#444" strokeWidth="0.25" strokeLinecap="square" strokeLinejoin="square"

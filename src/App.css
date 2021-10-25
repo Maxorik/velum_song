@@ -69,6 +69,17 @@
 
 .chordPanel {
     display: grid;
+    width: 400px;
+    grid-template-columns: repeat(4, 100px);
+}
+
+.divider {
+    border-left: 1px solid #000;
+    margin-right: 20px;
+}
+
+.videoContainer {
     width: 600px;
-    grid-template-columns: repeat(4, 1fr);
+    padding: 10px;
+    margin: 10px auto;
 }

@@ -15,14 +15,57 @@ function EditSongForm() {
     const [loading, setLoading] = useState(false);
     const [trackInfo, showTrackInfo] = useState(false);
     const [songData, setSongData] = useState({
-        chordCouplet: '',
-        chordChorus: '',
-        songName: '',
-        songComment: '',
-        songText: '',
-        songVideo: '',
-        rhytmCouplet: '',
-        rhytmChorus: ''
+        chordCouplet: 'A F G G5',
+        chordChorus: 'Am C5 A B',
+        songName: 'Поросенок Петр',
+        songComment: 'Песня поется про поросенка Петра, который съебывает из рашки на сраном тракторе',
+        songText: 'Em\n' +
+            'Спиздив сраный трактор,\n' +
+            'Am\n' +
+            'Съёбую из Рашки,\n' +
+            'G\n' +
+            'Поросенок Пётр\n' +
+            'Bm\n' +
+            'В беленькой рубашке.\n' +
+            '\n' +
+            'Em\n' +
+            'Я уеду нахуй,\n' +
+            'Am\n' +
+            'Я съебусь отсюда.\n' +
+            'G\n' +
+            'Спиздив сраный трактор,\n' +
+            'Bm\n' +
+            'Я увижу чудо.\n' +
+            '\n' +
+            'Em\n' +
+            'У меня вне Рашки\n' +
+            'Am\n' +
+            'Будет много тёлок,\n' +
+            'G\n' +
+            'Это тут Свинья я,\n' +
+            'Bm\n' +
+            'А там — Поросёнок.\n' +
+            '\n' +
+            'Em\n' +
+            'Там меня полюбят\n' +
+            'Am\n' +
+            'За мою рубашку\n' +
+            'G\n' +
+            'И за то, что трактор\n' +
+            'Bm\n' +
+            'Спиздил я из Рашки.\n' +
+            '\n' +
+            'Em\n' +
+            'Спиздив сраный трактор,\n' +
+            'Am\n' +
+            'Съёбую из Рашки,\n' +
+            'G\n' +
+            'Поросенок Пётр\n' +
+            'Bm\n' +
+            'В беленькой рубашке.',
+        songVideo: 'https://www.youtube.com/watch?v=3odiESWcxRU',
+        rhytmCouplet: '🡻🡻🡹🡻🡻🡹🡻🡹',
+        rhytmChorus: '🡻🡻🡹🡻🡻🡹🡻🡹'
     });
 
     function handleSubmit(event) {
@@ -92,7 +135,11 @@ function EditSongForm() {
     }
 
     return (<div>
-            { trackInfo ? <ShowSong/> :
+            { trackInfo ? <ShowSong
+                    songData={songData}
+                    key={songData.songName}
+                    showTrackInfo={showTrackInfo}
+                /> :
                 <form className='form-view' onSubmit={handleSubmit}>
                     <h3>{Lang.addSongTitle}</h3>
                     <TextField
@@ -100,6 +147,7 @@ function EditSongForm() {
                         className='mt-3'
                         name='songName'
                         onChange={onChangeInput}
+                        value={songData.songName}
                     />
                     <TextField
                         label={Lang.songComment}
@@ -107,6 +155,7 @@ function EditSongForm() {
                         className='mt-3' multiline
                         name='songComment'
                         onChange={onChangeInput}
+                        value={songData.songComment}
                     />
                     <div className='mt-5 flex-row-container'>
                         <div>
@@ -117,6 +166,7 @@ function EditSongForm() {
                                 helperText={Lang.chordHelper}
                                 className='form-view-half'
                                 onChange={onChangeInput}
+                                value={songData.chordCouplet}
                             />
                             <RhytmItems
                                 type={'rhytmCouplet'}
@@ -132,6 +182,7 @@ function EditSongForm() {
                                 helperText={Lang.chordHelper}
                                 className='form-view-half'
                                 onChange={onChangeInput}
+                                value={songData.chordChorus}
                             />
                             <RhytmItems
                                 type={'rhytmChorus'}
@@ -147,6 +198,7 @@ function EditSongForm() {
                         helperText={Lang.songTextHelper}
                         onChange={onChangeInput}
                         name='songText'
+                        value={songData.songText}
                     />
                     <TextField
                         label={Lang.songVideo}
@@ -155,6 +207,7 @@ function EditSongForm() {
                         helperText={Lang.songVideoHelper}
                         onChange={onChangeInput}
                         name='songVideo'
+                        value={songData.songVideo}
                     />
 
                     {loading ? <Loader/> :

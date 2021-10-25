@@ -29,6 +29,7 @@ const Lang = {
     saveButton:     'Сохранить',
     cancelButton:   'Отмена',
     previewButton:  'Предпросмотр',
+    backButton:     'Назад',
 
     baseFret:       'л'
 };
