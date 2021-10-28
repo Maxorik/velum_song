@@ -2,11 +2,11 @@
  * Форма для просмотра информации о песне
  */
 
-import React, {useState} from 'react';
-import Lang from '../main/settings/lang-ru';
+import React from 'react';
+import Lang from "../../settings/lang-ru";
 import Button from '@material-ui/core/Button';
-import ChordScheme from "../main/DrawChord/ChordScheme";
-import SongVideo from "../interfaceComponents/VideoIntegration";
+import ChordScheme from "../ui/ChordScheme/ChordScheme";
+import VideoIntegration from "../ui/VideoIntegration/VideoIntegration";
 
 function ShowSong(props) {
     const chordsCouplet = props.songData.chordCouplet.split(' ');
@@ -20,7 +20,7 @@ function ShowSong(props) {
         <div className='form-view'>
             <h2>{props.songData.songName}</h2>
             <pre>{props.songData.songComment}</pre>
-            <SongVideo
+            <VideoIntegration
                 link={props.songData.songVideo}
                 key={props.songData.songVideo}
             />

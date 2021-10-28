@@ -21,7 +21,6 @@
 
 import React from 'react';
 import guitarChords from "../../../lib/guitar";
-import Lang from "../settings/lang-ru";
 
 function ChordScheme(props) {
     const chordsList = guitarChords.chords;                          // список всех гитарных аккордов, разбитый по группам

@@ -3,12 +3,12 @@
  */
 
 import React, {useState} from 'react';
-import Lang from '../main/settings/lang-ru';
-import RhytmItems from '../interfaceComponents/RhytmItems';
+import Lang from "../../settings/lang-ru";
+import RhytmItems from "../ui/RhytmItems/RhytmItems";
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import axios from 'axios';
-import Loader from '../main/Loader/Loader';
+import Loader from "../ui/Loader/Loader";
 import ShowSong from './ShowSong'
 
 function EditSongForm() {

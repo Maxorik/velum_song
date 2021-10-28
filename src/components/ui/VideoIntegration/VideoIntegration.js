@@ -4,7 +4,7 @@
 
 import React from 'react';
 
-function SongVideo(props) {
+function VideoIntegration(props) {
     const videoCode = props.link.split('=');
     const videoLink = 'https://www.youtube.com/embed/' + videoCode[1];
     return(
@@ -18,4 +18,4 @@ function SongVideo(props) {
     )
 }
 
-export default SongVideo;
+export default VideoIntegration;
