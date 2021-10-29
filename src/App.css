@@ -1,4 +1,4 @@
-/*important стили перекрывают библиотеку MUI */
+/* important стили перекрывают библиотеку MUI */
 
 .small-input div input {
     width: 3em;
@@ -76,10 +76,4 @@
 .divider {
     border-left: 1px solid #000;
     margin-right: 20px;
-}
-
-.videoContainer {
-    width: 600px;
-    padding: 10px;
-    margin: 10px auto;
 }

@@ -57,9 +57,14 @@ function ShowSong(props) {
             </div>
             <pre className='mt-5'>{props.songData.songText}</pre>
 
-            <div className='form-buttons-container'>
-                <Button variant="contained" className='positive-button' onClick={backToEdit}>{Lang.backButton}</Button>
-            </div>
+            {   props.showTrackInfo ?
+                <div className='form-buttons-container'>
+                    <Button variant="contained" className='positive-button' onClick={props.handleSubmit}
+                            type="submit">{Lang.saveButton}</Button>
+                    <Button variant="contained" className='positive-button' onClick={backToEdit}>{Lang.backButton}</Button>
+                </div>
+                : null
+            }
         </div>
     )
 }

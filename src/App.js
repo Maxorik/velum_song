@@ -1,11 +1,11 @@
 import './App.css'
 import React from 'react'
-import EditSongForm from './components/pages/EditSong'
+import AllSongList from "./components/pages/AllSongList";
 
 function App() {
     return (
       <div className="App">
-          <EditSongForm />
+          <AllSongList />
       </div>
     );
 }

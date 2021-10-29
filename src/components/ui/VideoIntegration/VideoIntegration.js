@@ -3,6 +3,7 @@
  */
 
 import React from 'react';
+import './VideoIntegration.css'
 
 function VideoIntegration(props) {
     const videoCode = props.link.split('=');

@@ -69,10 +69,10 @@ function EditSongForm() {
     });
 
     function handleSubmit(event) {
-        event.preventDefault();
+        event && event.preventDefault();
         setLoading(true);
 
-        axios.post('https://velum-song-default-rtdb.firebaseio.com/songs.json', songData)
+        axios.post('https://velum-song-list-default-rtdb.firebaseio.com/songs.json', songData)
             .then(response => {
                 setLoading(false);
             })
@@ -139,6 +139,7 @@ function EditSongForm() {
                     songData={songData}
                     key={songData.songName}
                     showTrackInfo={showTrackInfo}
+                    handleSubmit={handleSubmit}
                 /> :
                 <form className='form-view' onSubmit={handleSubmit}>
                     <h3>{Lang.addSongTitle}</h3>

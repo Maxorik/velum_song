@@ -31,7 +31,7 @@ const Lang = {
     previewButton:  'Предпросмотр',
     backButton:     'Назад',
 
-    baseFret:       'л'
+    noSongs:        'Песен нет'
 };
 
 export default Lang;
