@@ -3,7 +3,7 @@
  */
 
 import React, {useEffect, useState} from 'react';
-import axios from 'axios';
+import {observer} from 'mobx-react-lite'
 import Accordion from "@material-ui/core/Accordion";
 import AccordionDetails from "@material-ui/core/AccordionDetails";
 import AccordionSummary from '@material-ui/core/AccordionSummary';
@@ -13,8 +13,9 @@ import Lang from "../../settings/lang-ru";
 import Loader from "../ui/Loader/Loader";
 import ShowSong from "./ShowSong";
 import EditSong from "./EditSong";
+import songParams from "../store/songParams";
 
-function AllSongList() {
+const AllSongList = observer(() => {
     const [songList, setSongList] = useState();
     const [editMode, setEditMode] = useState(false);
     const [loading, setLoading] = useState(true);
@@ -24,12 +25,9 @@ function AllSongList() {
     };
 
     useEffect(() => {
-        console.log('get songlist...');
-        axios.get('https://velum-song-list-default-rtdb.firebaseio.com/songs.json').then(response => {
-                const songParams = Object.entries(response.data);
-                setSongList(songParams);
-                setLoading(false);
-             }).catch(error => console.log(error));
+        songParams.getSongList();
+        setSongList(songParams.songsInfo);
+        setLoading(false);
     }, []);
 
     function setViewMode(isEdit) {
@@ -77,6 +75,6 @@ function AllSongList() {
             }
         </div>
     )
-}
+})
 
 export default AllSongList;
