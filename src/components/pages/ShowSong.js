@@ -7,6 +7,7 @@ import Lang from "../../settings/lang-ru";
 import Button from '@material-ui/core/Button';
 import ChordScheme from "../ui/ChordScheme/ChordScheme";
 import VideoIntegration from "../ui/VideoIntegration/VideoIntegration";
+import EditIcon from '@material-ui/icons/Edit';
 
 function ShowSong(props) {
     const chordsCouplet = props.songData.chordCouplet.split(' ');
@@ -16,8 +17,20 @@ function ShowSong(props) {
         props.showTrackInfo(false);
     }
 
+    function setEditMode() {
+        props.setMode(true);
+    }
+
     return(
         <div className='form-view'>
+            <Button
+                variant="outlined"
+                startIcon={<EditIcon />}
+                className='positive-button small-button'
+                onClick={setEditMode}
+            >
+                {Lang.editButton}
+            </Button>
             <h2>{props.songData.songName}</h2>
             <pre>{props.songData.songComment}</pre>
             <VideoIntegration

@@ -61,10 +61,14 @@
 }
 
 .positive-button {
-    background-color: #6AA957 !important;
+    background-color: #153606 !important;
     margin-right: 4px !important;
     color: #fff !important;
     font-weight: bold !important;
+}
+
+.small-button {
+    max-width: 180px;
 }
 
 .chordPanel {

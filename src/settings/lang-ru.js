@@ -30,6 +30,7 @@ const Lang = {
     cancelButton:   'Отмена',
     previewButton:  'Предпросмотр',
     backButton:     'Назад',
+    editButton:     'Редактировать',
 
     noSongs:        'Песен нет'
 };

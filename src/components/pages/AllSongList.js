@@ -10,14 +10,15 @@ import AccordionSummary from '@material-ui/core/AccordionSummary';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Lang from "../../settings/lang-ru";
-import Button from '@material-ui/core/Button';
 import Loader from "../ui/Loader/Loader";
 import ShowSong from "./ShowSong";
+import EditSong from "./EditSong";
 
 function AllSongList() {
     const [songList, setSongList] = useState();
+    const [editMode, setEditMode] = useState(false);
     const [loading, setLoading] = useState(true);
-    const [expanded, setExpanded] = React.useState(false);
+    const [expanded, setExpanded] = useState(false);
     const handleChange = (panel) => (event, isExpanded) => {
         setExpanded(isExpanded ? panel : false);
     };
@@ -30,6 +31,10 @@ function AllSongList() {
                 setLoading(false);
              }).catch(error => console.log(error));
     }, []);
+
+    function setViewMode(isEdit) {
+        setEditMode(isEdit);
+    }
 
     return(
         <div>
@@ -51,10 +56,17 @@ function AllSongList() {
                                     </AccordionSummary>
                                     <AccordionDetails>
                                         <Typography component={'span'}>
-                                              <ShowSong
-                                                songData={song[1]}
-                                                key={song[0]}
-                                               />
+                                            {
+                                                editMode ? <EditSong
+                                                    songData={song[1]}
+                                                    setMode={setViewMode}
+                                                    key={song[0]}
+                                                /> : <ShowSong
+                                                    songData={song[1]}
+                                                    setMode={setViewMode}
+                                                    key={song[0]}
+                                                />
+                                            }
                                         </Typography>
                                     </AccordionDetails>
                                 </Accordion>

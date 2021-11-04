@@ -11,61 +11,18 @@ import axios from 'axios';
 import Loader from "../ui/Loader/Loader";
 import ShowSong from './ShowSong'
 
-function EditSongForm() {
+function EditSongForm(props) {
     const [loading, setLoading] = useState(false);
     const [trackInfo, showTrackInfo] = useState(false);
     const [songData, setSongData] = useState({
-        chordCouplet: 'A F G G5',
-        chordChorus: 'Am C5 A B',
-        songName: 'Поросенок Петр',
-        songComment: 'Песня поется про поросенка Петра, который съебывает из рашки на сраном тракторе',
-        songText: 'Em\n' +
-            'Спиздив сраный трактор,\n' +
-            'Am\n' +
-            'Съёбую из Рашки,\n' +
-            'G\n' +
-            'Поросенок Пётр\n' +
-            'Bm\n' +
-            'В беленькой рубашке.\n' +
-            '\n' +
-            'Em\n' +
-            'Я уеду нахуй,\n' +
-            'Am\n' +
-            'Я съебусь отсюда.\n' +
-            'G\n' +
-            'Спиздив сраный трактор,\n' +
-            'Bm\n' +
-            'Я увижу чудо.\n' +
-            '\n' +
-            'Em\n' +
-            'У меня вне Рашки\n' +
-            'Am\n' +
-            'Будет много тёлок,\n' +
-            'G\n' +
-            'Это тут Свинья я,\n' +
-            'Bm\n' +
-            'А там — Поросёнок.\n' +
-            '\n' +
-            'Em\n' +
-            'Там меня полюбят\n' +
-            'Am\n' +
-            'За мою рубашку\n' +
-            'G\n' +
-            'И за то, что трактор\n' +
-            'Bm\n' +
-            'Спиздил я из Рашки.\n' +
-            '\n' +
-            'Em\n' +
-            'Спиздив сраный трактор,\n' +
-            'Am\n' +
-            'Съёбую из Рашки,\n' +
-            'G\n' +
-            'Поросенок Пётр\n' +
-            'Bm\n' +
-            'В беленькой рубашке.',
-        songVideo: 'https://www.youtube.com/watch?v=3odiESWcxRU',
-        rhytmCouplet: '🡻🡻🡹🡻🡻🡹🡻🡹',
-        rhytmChorus: '🡻🡻🡹🡻🡻🡹🡻🡹'
+        chordCouplet: '',
+        chordChorus: '',
+        songName: '',
+        songComment: '',
+        songText: '',
+        songVideo: '',
+        rhytmCouplet: '',
+        rhytmChorus: ''
     });
 
     function handleSubmit(event) {
@@ -132,6 +89,7 @@ function EditSongForm() {
 
     function previewSong() {
         showTrackInfo(true);
+        props.setMode(false);
     }
 
     return (<div>
