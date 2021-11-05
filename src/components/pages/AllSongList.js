@@ -16,9 +16,7 @@ import EditSong from "./EditSong";
 import songParams from "../store/songParams";
 
 const AllSongList = observer(() => {
-    const [songList, setSongList] = useState();
     const [editMode, setEditMode] = useState(false);
-    const [loading, setLoading] = useState(true);
     const [expanded, setExpanded] = useState(false);
     const handleChange = (panel) => (event, isExpanded) => {
         setExpanded(isExpanded ? panel : false);
@@ -26,8 +24,6 @@ const AllSongList = observer(() => {
 
     useEffect(() => {
         songParams.getSongList();
-        setSongList(songParams.songsInfo);
-        setLoading(false);
     }, []);
 
     function setViewMode(isEdit) {
@@ -36,11 +32,11 @@ const AllSongList = observer(() => {
 
     return(
         <div>
-            {loading ? <Loader/> :
-                !songList || songList.length === 0 ? <p>{Lang.noSongs}</p> :
+            {songParams.loading ? <Loader/> :
+                !songParams.songsInfo || songParams.songsInfo.length === 0 ? <p>{Lang.noSongs}</p> :
                 <div className='song-container'>
-                    {
-                        songList.map((song, index) => {
+                    { songParams.songsInfo.map((song) =>
+                        {
                             return (
                                 <Accordion key={song[0]} expanded={expanded === 'panel' + song[0]} onChange={handleChange('panel' + song[0])}>
                                     <AccordionSummary
