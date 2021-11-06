@@ -13,6 +13,7 @@ import Lang from "../../settings/lang-ru";
 import Loader from "../ui/Loader/Loader";
 import ShowSong from "./ShowSong";
 import EditSong from "./EditSong";
+import songList from "../store/songList";
 import songParams from "../store/songParams";
 
 const AllSongList = observer(() => {
@@ -23,7 +24,7 @@ const AllSongList = observer(() => {
     };
 
     useEffect(() => {
-        songParams.getSongList();
+        songList.getSongList();
     }, []);
 
     function setViewMode(isEdit) {
@@ -32,10 +33,10 @@ const AllSongList = observer(() => {
 
     return(
         <div>
-            {songParams.loading ? <Loader/> :
-                !songParams.songsInfo || songParams.songsInfo.length === 0 ? <p>{Lang.noSongs}</p> :
+            {songList.loading ? <Loader/> :
+                !songList.songsInfo || songList.songsInfo.length === 0 ? <p>{Lang.noSongs}</p> :
                 <div className='song-container'>
-                    { songParams.songsInfo.map((song) =>
+                    { songList.songsInfo.map((song) =>
                         {
                             return (
                                 <Accordion key={song[0]} expanded={expanded === 'panel' + song[0]} onChange={handleChange('panel' + song[0])}>

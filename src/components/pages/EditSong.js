@@ -3,33 +3,25 @@
  */
 
 import React, {useState} from 'react';
+import {observer} from 'mobx-react-lite'
 import Lang from "../../settings/lang-ru";
 import RhytmItems from "../ui/RhytmItems/RhytmItems";
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import axios from 'axios';
 import Loader from "../ui/Loader/Loader";
-import ShowSong from './ShowSong'
+import ShowSong from './ShowSong';
+import songParams from "../store/songParams";
 
-function EditSongForm(props) {
+const EditSongForm = observer(() => {
     const [loading, setLoading] = useState(false);
     const [trackInfo, showTrackInfo] = useState(false);
-    const [songData, setSongData] = useState({
-        chordCouplet: '',
-        chordChorus: '',
-        songName: '',
-        songComment: '',
-        songText: '',
-        songVideo: '',
-        rhytmCouplet: '',
-        rhytmChorus: ''
-    });
 
     function handleSubmit(event) {
         event && event.preventDefault();
         setLoading(true);
 
-        axios.post('https://velum-song-list-default-rtdb.firebaseio.com/songs.json', songData)
+        axios.post('https://velum-song-list-default-rtdb.firebaseio.com/songs.json', songParams.song)
             .then(response => {
                 setLoading(false);
             })
@@ -46,16 +38,10 @@ function EditSongForm(props) {
 
         if (name === 'chordCouplet' || name === 'chordChorus') {
             if (!value || chordMaskRe.test(value)) {
-                setSongData(prevState => ({
-                    ...prevState,
-                    [name]: value
-                }))
+                songParams.changeParam(name, value);
             }
         } else {
-            setSongData(prevState => ({
-                ...prevState,
-                [name]: value
-            }))
+            songParams.changeParam(name, value);
         }
     }
 
@@ -75,27 +61,21 @@ function EditSongForm(props) {
         };
 
         if (key === 'clear') {
-            setSongData(prevState => ({
-                ...prevState,
-                [rhytmtype]: ''
-            }))
+            songParams.changeParam(rhytmtype, '');
         } else {
-            setSongData(prevState => ({
-                ...prevState,
-                [rhytmtype]: prevState[rhytmtype] + rhytmBook[key]
-            }))
+            songParams.changeParam(rhytmtype, songParams.song[rhytmtype] + rhytmBook[key]);
         }
     }
 
     function previewSong() {
         showTrackInfo(true);
-        props.setMode(false);
+        // props.setMode(false);
     }
 
     return (<div>
             { trackInfo ? <ShowSong
-                    songData={songData}
-                    key={songData.songName}
+                    songData={songParams.song}
+                    key={songParams.song.songName}
                     showTrackInfo={showTrackInfo}
                     handleSubmit={handleSubmit}
                 /> :
@@ -106,7 +86,7 @@ function EditSongForm(props) {
                         className='mt-3'
                         name='songName'
                         onChange={onChangeInput}
-                        value={songData.songName}
+                        value={songParams.song.songName}
                     />
                     <TextField
                         label={Lang.songComment}
@@ -114,7 +94,7 @@ function EditSongForm(props) {
                         className='mt-3' multiline
                         name='songComment'
                         onChange={onChangeInput}
-                        value={songData.songComment}
+                        value={songParams.song.songComment}
                     />
                     <div className='mt-5 flex-row-container'>
                         <div>
@@ -125,11 +105,11 @@ function EditSongForm(props) {
                                 helperText={Lang.chordHelper}
                                 className='form-view-half'
                                 onChange={onChangeInput}
-                                value={songData.chordCouplet}
+                                value={songParams.song.chordCouplet}
                             />
                             <RhytmItems
                                 type={'rhytmCouplet'}
-                                value={songData.rhytmCouplet}
+                                value={songParams.song.rhytmCouplet}
                                 onChange={onChangeRhytm}
                             />
                         </div>
@@ -141,11 +121,11 @@ function EditSongForm(props) {
                                 helperText={Lang.chordHelper}
                                 className='form-view-half'
                                 onChange={onChangeInput}
-                                value={songData.chordChorus}
+                                value={songParams.song.chordChorus}
                             />
                             <RhytmItems
                                 type={'rhytmChorus'}
-                                value={songData.rhytmChorus}
+                                value={songParams.song.rhytmChorus}
                                 onChange={onChangeRhytm}
                             />
                         </div>
@@ -157,7 +137,7 @@ function EditSongForm(props) {
                         helperText={Lang.songTextHelper}
                         onChange={onChangeInput}
                         name='songText'
-                        value={songData.songText}
+                        value={songParams.song.songText}
                     />
                     <TextField
                         label={Lang.songVideo}
@@ -166,7 +146,7 @@ function EditSongForm(props) {
                         helperText={Lang.songVideoHelper}
                         onChange={onChangeInput}
                         name='songVideo'
-                        value={songData.songVideo}
+                        value={songParams.song.songVideo}
                     />
 
                     {loading ? <Loader/> :
@@ -181,7 +161,7 @@ function EditSongForm(props) {
             }
         </div>
     )
-}
+})
 
 export default EditSongForm;
 

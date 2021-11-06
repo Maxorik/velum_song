@@ -3,13 +3,15 @@
  */
 
 import React from 'react';
+import {observer} from 'mobx-react-lite'
 import Lang from "../../settings/lang-ru";
 import Button from '@material-ui/core/Button';
 import ChordScheme from "../ui/ChordScheme/ChordScheme";
 import VideoIntegration from "../ui/VideoIntegration/VideoIntegration";
 import EditIcon from '@material-ui/icons/Edit';
+import songParams from "../store/songParams";
 
-function ShowSong(props) {
+const ShowSong = observer((props) => {
     const chordsCouplet = props.songData.chordCouplet.split(' ');
     const chordsChorus = props.songData.chordChorus.split(' ');
 
@@ -18,6 +20,7 @@ function ShowSong(props) {
     }
 
     function setEditMode() {
+        songParams.setSongParam(props.songData);
         props.setMode(true);
     }
 
@@ -80,6 +83,6 @@ function ShowSong(props) {
             }
         </div>
     )
-}
+})
 
 export default ShowSong;

@@ -1,23 +1,31 @@
 import {makeAutoObservable} from "mobx";
-import axios from 'axios';
-import appSettings from "../../settings/global";
 
 class SongParams {
-    songsInfo = [];
+    song = {
+        chordCouplet: '',
+        chordChorus: '',
+        songName: '',
+        songComment: '',
+        songText: '',
+        songVideo: '',
+        rhytmCouplet: '',
+        rhytmChorus: ''
+    };
     loading = true;
 
     constructor() {
         makeAutoObservable(this, {}, {deep:false})
     }
 
-    getSongList() {
-        axios
-            .get(appSettings.apiSonglist)
-            .then(response => {
-                this.songsInfo = Object.entries(response.data);
-                this.loading = false;
-            })
-            .catch(error => console.log(error));
+    setSongParam(props) {
+        this.song = props;
+    }
+
+    changeParam(param, value) {
+        this.song = {
+            ...this.song,
+            [param]: value
+        }
     }
 }
 
