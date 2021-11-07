@@ -12,15 +12,17 @@ import EditIcon from '@material-ui/icons/Edit';
 import songParams from "../store/songParams";
 
 const ShowSong = observer((props) => {
-    const chordsCouplet = props.songData.chordCouplet.split(' ');
-    const chordsChorus = props.songData.chordChorus.split(' ');
+    const songData = props.songData[1] ? props.songData[1] : props.songData;
+    const chordsCouplet = songData.chordCouplet.split(' ');
+    const chordsChorus = songData.chordChorus.split(' ');
 
     function backToEdit() {
         props.showTrackInfo(false);
     }
 
     function setEditMode() {
-        songParams.setSongParam(props.songData);
+        songParams.setSongParam(props.songData[1]);
+        songParams.changeParam('songId', props.songData[0]);
         props.setMode(true);
     }
 
@@ -34,16 +36,16 @@ const ShowSong = observer((props) => {
             >
                 {Lang.editButton}
             </Button>
-            <h2>{props.songData.songName}</h2>
-            <pre>{props.songData.songComment}</pre>
+            <h2>{songData.songName}</h2>
+            <pre>{songData.songComment}</pre>
             <VideoIntegration
-                link={props.songData.songVideo}
-                key={props.songData.songVideo}
+                link={songData.songVideo}
+                key={songData.songVideo}
             />
             <div className='mt-5 flex-row-container'>
                 <div>
                     <h5>{Lang.coupletTitle}</h5>
-                    <p>{props.songData.rhytmCouplet}</p>
+                    <p>{songData.rhytmCouplet}</p>
                     <div className='chordPanel'>
                         {chordsCouplet.map((chord, index) => {
                             return (
@@ -58,7 +60,7 @@ const ShowSong = observer((props) => {
                 <div className='divider'></div>
                 <div className='form-view-half'>
                     <h5>{Lang.chorusTitle}</h5>
-                    <p>{props.songData.rhytmChorus}</p>
+                    <p>{songData.rhytmChorus}</p>
                     <div className='chordPanel'>
                         {chordsChorus.map((chord, index) => {
                             return (
@@ -71,7 +73,7 @@ const ShowSong = observer((props) => {
                     </div>
                 </div>
             </div>
-            <pre className='mt-5'>{props.songData.songText}</pre>
+            <pre className='mt-5'>{songData.songText}</pre>
 
             {   props.showTrackInfo ?
                 <div className='form-buttons-container'>

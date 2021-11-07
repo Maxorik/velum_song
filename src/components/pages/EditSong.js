@@ -5,13 +5,14 @@
 import React, {useState} from 'react';
 import {observer} from 'mobx-react-lite'
 import Lang from "../../settings/lang-ru";
+import rhytms from "../../lib/rhytms";
 import RhytmItems from "../ui/RhytmItems/RhytmItems";
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import axios from 'axios';
 import Loader from "../ui/Loader/Loader";
 import ShowSong from './ShowSong';
 import songParams from "../store/songParams";
+import songList from "../store/songList";
 
 const EditSongForm = observer(() => {
     const [loading, setLoading] = useState(false);
@@ -21,14 +22,11 @@ const EditSongForm = observer(() => {
         event && event.preventDefault();
         setLoading(true);
 
-        axios.post('https://velum-song-list-default-rtdb.firebaseio.com/songs.json', songParams.song)
-            .then(response => {
-                setLoading(false);
-            })
-            .catch(error => {
-                console.log(error);
-                setLoading(false);
-            })
+        if(songParams.song.songId) {
+            songList.changeSong(songParams.song);
+        } else {
+            songList.addNewSong(songParams.song);
+        }
     }
 
     function onChangeInput(event) {
@@ -48,22 +46,11 @@ const EditSongForm = observer(() => {
     function onChangeRhytm(event) {
         const key = event.currentTarget.name;
         const rhytmtype = event.currentTarget.getAttribute('rhytmtype');
-        const rhytmBook = {
-            'arrowUp': '🡹',
-            'arrowDown': '🡻',
-            'arrowUpLess': '🡅',
-            'arrowDownLess': '🡇',
-            'jamming': '✖',
-            'rhytm8': '🡻🡻🡹🡻🡻🡹🡻🡹 (8)',
-            'rhytm6': '🡻🡻🡹🡹🡻🡹 (6)',
-            'rhytm4': '🡻🡹🡻🡹 (4)',
-            'rhytmGalop': '🡻🡻🡹🡻🡻🡹🡻🡻🡹🡻'
-        };
 
         if (key === 'clear') {
             songParams.changeParam(rhytmtype, '');
         } else {
-            songParams.changeParam(rhytmtype, songParams.song[rhytmtype] + rhytmBook[key]);
+            songParams.changeParam(rhytmtype, songParams.song[rhytmtype] + rhytms[key]);
         }
     }
 

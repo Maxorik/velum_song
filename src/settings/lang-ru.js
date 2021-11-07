@@ -32,7 +32,7 @@ const Lang = {
     backButton:     'Назад',
     editButton:     'Редактировать',
 
-    noSongs:        'Песен нет'
+    noSongs:        'Список песен пуст'
 };
 
 export default Lang;

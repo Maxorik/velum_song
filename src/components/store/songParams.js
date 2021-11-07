@@ -9,7 +9,8 @@ class SongParams {
         songText: '',
         songVideo: '',
         rhytmCouplet: '',
-        rhytmChorus: ''
+        rhytmChorus: '',
+        songId: null
     };
     loading = true;
 
