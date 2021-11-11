@@ -35,10 +35,8 @@ const EditSongForm = observer((props) => {
             rhytmChorus: '',
             songId: null
         });
-        props.setMode();
-        if(props.isModal) {
-            props.isModal();
-        }
+
+        props.isModal ? props.isModal() : props.setMode();
     }
 
     function onChangeInput(event) {

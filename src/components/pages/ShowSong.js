@@ -9,7 +9,9 @@ import Button from '@material-ui/core/Button';
 import ChordScheme from "../ui/ChordScheme/ChordScheme";
 import VideoIntegration from "../ui/VideoIntegration/VideoIntegration";
 import EditIcon from '@material-ui/icons/Edit';
+import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import songParams from "../store/songParams";
+import songList from "../store/songList";
 
 const ShowSong = observer((props) => {
     const songData = props.songData[1];
@@ -22,16 +24,31 @@ const ShowSong = observer((props) => {
         props.setMode();
     }
 
+    function deleteSong() {
+        songList.loading = true;
+        songList.deleteSong(props.songData[0]);
+    }
+
     return(
         <div className='form-view'>
-            <Button
-                variant="outlined"
-                startIcon={<EditIcon />}
-                className='positive-button small-button'
-                onClick={setEditMode}
-            >
-                {Lang.editButton}
-            </Button>
+            <div style={{display: 'flex'}}>
+                <Button
+                    variant="outlined"
+                    startIcon={<EditIcon />}
+                    className='positive-button small-button'
+                    onClick={setEditMode}
+                >
+                    {Lang.editButton}
+                </Button>
+                <Button
+                    variant="outlined"
+                    startIcon={<DeleteForeverIcon />}
+                    className='small-button'
+                    onClick={deleteSong}
+                >
+                    {Lang.deleteButton}
+                </Button>
+            </div>
             <h2>{songData.songName}</h2>
             <pre>{songData.songComment}</pre>
             <VideoIntegration

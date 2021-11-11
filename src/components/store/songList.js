@@ -43,6 +43,18 @@ class SongList {
                 this.loading = false;
             })
     }
+
+    deleteSong(songId) {
+        axios.delete(appSettings.apiSonglist + '/' + songId + '.json')
+            .then(response => {
+                this.loading = false;
+                this.getSongList();
+            })
+            .catch(error => {
+                console.log(error);
+                this.loading = false;
+            })
+    }
 }
 
 export default new SongList()
