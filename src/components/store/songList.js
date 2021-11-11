@@ -23,19 +23,24 @@ class SongList {
     addNewSong(songParams) {
         axios.post(appSettings.apiSonglist + '.json', songParams)
             .then(response => {
-                // TODO добавить лоадер
+                this.loading = false;
+                this.getSongList();
             })
             .catch(error => {
                 console.log(error);
+                this.loading = false;
             })
     }
 
     changeSong(songParams) {
         axios.put(appSettings.apiSonglist + '/' + songParams.songId + '.json', songParams)
             .then(response => {
+                this.loading = false;
+                this.getSongList();
             })
             .catch(error => {
                 console.log(error);
+                this.loading = false;
             })
     }
 }

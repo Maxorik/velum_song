@@ -1,8 +1,8 @@
 /**
- * Форма для добавления трека
+ * Форма для добавления или редактирования трека
  */
 
-import React, {useState} from 'react';
+import React from 'react';
 import {observer} from 'mobx-react-lite'
 import Lang from "../../settings/lang-ru";
 import rhytms from "../../lib/rhytms";
@@ -10,23 +10,21 @@ import RhytmItems from "../ui/RhytmItems/RhytmItems";
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Loader from "../ui/Loader/Loader";
-import ShowSong from './ShowSong';
 import songParams from "../store/songParams";
 import songList from "../store/songList";
 
-const EditSongForm = observer(() => {
-    const [loading, setLoading] = useState(false);
-    const [trackInfo, showTrackInfo] = useState(false);
-
+const EditSongForm = observer((props) => {
     function handleSubmit(event) {
         event && event.preventDefault();
-        setLoading(true);
+        songList.loading = true;
 
         if(songParams.song.songId) {
             songList.changeSong(songParams.song);
         } else {
             songList.addNewSong(songParams.song);
         }
+
+        props.setMode();
     }
 
     function onChangeInput(event) {
@@ -54,18 +52,7 @@ const EditSongForm = observer(() => {
         }
     }
 
-    function previewSong() {
-        showTrackInfo(true);
-        // props.setMode(false);
-    }
-
     return (<div>
-            { trackInfo ? <ShowSong
-                    songData={songParams.song}
-                    key={songParams.song.songName}
-                    showTrackInfo={showTrackInfo}
-                    handleSubmit={handleSubmit}
-                /> :
                 <form className='form-view' onSubmit={handleSubmit}>
                     <h3>{Lang.addSongTitle}</h3>
                     <TextField
@@ -136,12 +123,11 @@ const EditSongForm = observer(() => {
                         value={songParams.song.songVideo}
                     />
 
-                    {loading ? <Loader/> :
+                    {songList.loading ? <Loader/> :
                         <div className='form-buttons-container'>
                             <Button variant="contained" className='positive-button' onClick={handleSubmit}
                                     type="submit">{Lang.saveButton}</Button>
-                            <Button variant="contained" className='positive-button' onClick={previewSong}>{Lang.previewButton}</Button>
-                            <Button variant="contained">{Lang.cancelButton}</Button>
+                            <Button variant="contained" onClick={props.setMode}>{Lang.cancelButton}</Button>
                         </div>
                     }
                 </form>

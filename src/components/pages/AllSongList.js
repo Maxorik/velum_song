@@ -14,9 +14,6 @@ import Loader from "../ui/Loader/Loader";
 import ShowSong from "./ShowSong";
 import EditSong from "./EditSong";
 import songList from "../store/songList";
-import songParams from "../store/songParams";
-import axios from "axios";
-import appSettings from "../../settings/global";
 
 const AllSongList = observer(() => {
     const [editMode, setEditMode] = useState(false);
@@ -29,28 +26,12 @@ const AllSongList = observer(() => {
         songList.getSongList();
     }, []);
 
-    function setViewMode(isEdit) {
-        setEditMode(isEdit);
-    }
-
-    function addSong(){
-        const song = {
-            chordCouplet: 'C Cm D Dm E Em',
-            chordChorus: 'F Fm G Gm A Am H Hm',
-            songName: 'Песня новая',
-            songComment: 'все стерлось',
-            songText: 'ыыы ыыыы  ыыыы ыы ы',
-            songVideo: 'https://www.youtube.com/watch?v=I_aBmrYChfQ&list=FLrPlJSnJjuo6QsdhBJuNduQ&index=2',
-            rhytmCouplet: '🡻🡻🡹🡻🡻🡹🡻🡹',
-            rhytmChorus: '🡻🡻🡹🡻🡻🡹🡻🡹',
-        };
-
-        axios.post(appSettings.apiSonglist + '.json', song);
+    function setViewMode() {
+        setEditMode(prev => !prev);
     }
 
     return(
         <div>
-            <button onClick={addSong}>Добавить</button>
             {songList.loading ? <Loader/> :
                 !songList.songsInfo || songList.songsInfo.length === 0 ? <p>{Lang.noSongs}</p> :
                 <div className='song-container'>

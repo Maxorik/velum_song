@@ -12,7 +12,6 @@ class SongParams {
         rhytmChorus: '',
         songId: null
     };
-    loading = true;
 
     constructor() {
         makeAutoObservable(this, {}, {deep:false})

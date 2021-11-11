@@ -12,18 +12,14 @@ import EditIcon from '@material-ui/icons/Edit';
 import songParams from "../store/songParams";
 
 const ShowSong = observer((props) => {
-    const songData = props.songData[1] ? props.songData[1] : props.songData;
+    const songData = props.songData[1];
     const chordsCouplet = songData.chordCouplet.split(' ');
     const chordsChorus = songData.chordChorus.split(' ');
-
-    function backToEdit() {
-        props.showTrackInfo(false);
-    }
 
     function setEditMode() {
         songParams.setSongParam(props.songData[1]);
         songParams.changeParam('songId', props.songData[0]);
-        props.setMode(true);
+        props.setMode();
     }
 
     return(
@@ -74,15 +70,6 @@ const ShowSong = observer((props) => {
                 </div>
             </div>
             <pre className='mt-5'>{songData.songText}</pre>
-
-            {   props.showTrackInfo ?
-                <div className='form-buttons-container'>
-                    <Button variant="contained" className='positive-button' onClick={props.handleSubmit}
-                            type="submit">{Lang.saveButton}</Button>
-                    <Button variant="contained" className='positive-button' onClick={backToEdit}>{Lang.backButton}</Button>
-                </div>
-                : null
-            }
         </div>
     )
 })
