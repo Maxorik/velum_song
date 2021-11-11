@@ -9,13 +9,13 @@
 .form-view {
     display: flex;
     flex-direction: column;
-    width: 60vw;
+    width: 70vw;
     padding: 20px;
     margin: 0 auto;
 }
 
 .form-view-half {
-    width: 26vw;
+    width: 30vw;
 }
 
 .icon-button {
@@ -80,4 +80,26 @@
 .divider {
     border-left: 1px solid #000;
     margin-right: 20px;
+}
+
+.songlist-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 40px;
+}
+
+.modal-window {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 5px;
+    padding: 2px;
+    background-color: #fff;
+    max-height: 90vh;
+    overflow: auto;
+    box-shadow: 4px 3px 10px -1px rgba(0,0,0,0.58);
+    -webkit-box-shadow: 4px 3px 10px -1px rgba(0,0,0,0.58);
+    -moz-box-shadow: 4px 3px 10px -1px rgba(0,0,0,0.58);
 }

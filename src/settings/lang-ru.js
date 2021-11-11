@@ -31,6 +31,7 @@ const Lang = {
     previewButton:  'Предпросмотр',
     backButton:     'Назад',
     editButton:     'Редактировать',
+    addSongButton:  'Добавить песню',
 
     noSongs:        'Список песен пуст'
 };

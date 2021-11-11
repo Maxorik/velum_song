@@ -24,7 +24,21 @@ const EditSongForm = observer((props) => {
             songList.addNewSong(songParams.song);
         }
 
+        songParams.setSongParam({
+            chordCouplet: '',
+            chordChorus: '',
+            songName: '',
+            songComment: '',
+            songText: '',
+            songVideo: '',
+            rhytmCouplet: '',
+            rhytmChorus: '',
+            songId: null
+        });
         props.setMode();
+        if(props.isModal) {
+            props.isModal();
+        }
     }
 
     function onChangeInput(event) {
@@ -49,6 +63,13 @@ const EditSongForm = observer((props) => {
             songParams.changeParam(rhytmtype, '');
         } else {
             songParams.changeParam(rhytmtype, songParams.song[rhytmtype] + rhytms[key]);
+        }
+    }
+
+    function cancelEdit() {
+        props.setMode();
+        if(props.isModal) {
+            props.isModal();
         }
     }
 
@@ -127,12 +148,11 @@ const EditSongForm = observer((props) => {
                         <div className='form-buttons-container'>
                             <Button variant="contained" className='positive-button' onClick={handleSubmit}
                                     type="submit">{Lang.saveButton}</Button>
-                            <Button variant="contained" onClick={props.setMode}>{Lang.cancelButton}</Button>
+                            <Button variant="contained" onClick={cancelEdit}>{Lang.cancelButton}</Button>
                         </div>
                     }
                 </form>
-            }
-        </div>
+            </div>
     )
 })
 
