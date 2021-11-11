@@ -61,10 +61,8 @@
 }
 
 .positive-button {
-    background-color: #153606 !important;
+    color: #153606 !important;
     margin-right: 4px !important;
-    color: #fff !important;
-    font-weight: bold !important;
 }
 
 .small-button {

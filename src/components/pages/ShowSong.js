@@ -33,7 +33,7 @@ const ShowSong = observer((props) => {
         <div className='form-view'>
             <div style={{display: 'flex'}}>
                 <Button
-                    variant="outlined"
+                    variant="text"
                     startIcon={<EditIcon />}
                     className='positive-button small-button'
                     onClick={setEditMode}
@@ -41,7 +41,7 @@ const ShowSong = observer((props) => {
                     {Lang.editButton}
                 </Button>
                 <Button
-                    variant="outlined"
+                    variant="text"
                     startIcon={<DeleteForeverIcon />}
                     className='small-button'
                     onClick={deleteSong}

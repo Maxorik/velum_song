@@ -144,9 +144,9 @@ const EditSongForm = observer((props) => {
 
                     {songList.loading ? <Loader/> :
                         <div className='form-buttons-container'>
-                            <Button variant="contained" className='positive-button' onClick={handleSubmit}
+                            <Button variant="outlined" className='positive-button' onClick={handleSubmit}
                                     type="submit">{Lang.saveButton}</Button>
-                            <Button variant="contained" onClick={cancelEdit}>{Lang.cancelButton}</Button>
+                            <Button variant="text" onClick={cancelEdit}>{Lang.cancelButton}</Button>
                         </div>
                     }
                 </form>
