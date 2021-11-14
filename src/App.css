@@ -101,3 +101,16 @@
     -webkit-box-shadow: 4px 3px 10px -1px rgba(0,0,0,0.58);
     -moz-box-shadow: 4px 3px 10px -1px rgba(0,0,0,0.58);
 }
+
+.modal-window-dialog {
+    width: 310px;
+    min-height: 130px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px 0 10px 10px;
+}
+
+.modal-buttons {
+    margin-left: 100px;
+}

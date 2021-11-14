@@ -1,5 +1,13 @@
 // TODO разбить на категории
 const Lang = {
+    langWithParams: function (...args) {
+        let phrase = args[0];
+        for(let i=1; i<args.length; i++) {
+            phrase = phrase.replace(/\{\d}/, args[i]);
+        }
+        return phrase;
+    },
+
     addSongTitle:   'Добавить песню',
     coupletTitle:   'Куплет',
     chorusTitle:    'Припев',
@@ -34,7 +42,8 @@ const Lang = {
     deleteButton:   'Удалить',
     addSongButton:  'Добавить песню',
 
-    noSongs:        'Список песен пуст'
+    noSongs:        'Список песен пуст',
+    deleteConfirmText: 'Действительно хотите удалить {0}?',
 };
 
 export default Lang;

@@ -1,3 +1,7 @@
+/**
+ * Стор для управления песнями
+ */
+
 import {makeAutoObservable} from "mobx";
 import axios from 'axios';
 import appSettings from "../../settings/global";

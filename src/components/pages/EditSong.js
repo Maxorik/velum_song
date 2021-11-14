@@ -18,13 +18,9 @@ const EditSongForm = observer((props) => {
         event && event.preventDefault();
         songList.loading = true;
 
-        if(songParams.song.songId) {
-            songList.changeSong(songParams.song);
-        } else {
-            songList.addNewSong(songParams.song);
-        }
+        songParams.song.songId ? songList.changeSong(songParams.song) : songList.addNewSong(songParams.song);
 
-        songParams.setSongParam({
+        songParams.setSong({
             chordCouplet: '',
             chordChorus: '',
             songName: '',
@@ -57,18 +53,12 @@ const EditSongForm = observer((props) => {
         const key = event.currentTarget.name;
         const rhytmtype = event.currentTarget.getAttribute('rhytmtype');
 
-        if (key === 'clear') {
-            songParams.changeParam(rhytmtype, '');
-        } else {
-            songParams.changeParam(rhytmtype, songParams.song[rhytmtype] + rhytms[key]);
-        }
+        key === 'clear' ? songParams.changeParam(rhytmtype, '') :
+                          songParams.changeParam(rhytmtype, songParams.song[rhytmtype] + rhytms[key]);
     }
 
     function cancelEdit() {
-        props.setMode();
-        if(props.isModal) {
-            props.isModal();
-        }
+        props.isModal ? props.isModal() : props.setMode();
     }
 
     return (<div>

@@ -50,7 +50,7 @@ function ChordScheme(props) {
         const baseFret = chordScheme.baseFret > 1 ? chordScheme.baseFret: '';  // лад, с которого берется ааккорд
 
         // определяем, в каких местах зажимаются струны
-        // TODO для поддержки укулеле меняется константа i<6
+        // TODO для поддержки укулеле меняется константа i<6 на i<4
         for(let i=0; i<6; i++) {
             let position = chordScheme.frets[i];
             strings[i].y = (position + position - 1) * 6;
@@ -58,6 +58,7 @@ function ChordScheme(props) {
         }
 
         // отрисовка барре
+        // Прим.: все нижеследующие константы подобраны исходя из того, чтобы svg выглядела корректно
         function Barre() {
             if(chordScheme.barres.length > 0) {
                 const barrePos = chordScheme.barres[0];

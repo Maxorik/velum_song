@@ -1,6 +1,11 @@
+/**
+ * Стор для изменения выбранной песни
+ */
+
 import {makeAutoObservable} from "mobx";
 
 class SongParams {
+    // модель песни
     song = {
         chordCouplet: '',
         chordChorus: '',
@@ -17,7 +22,7 @@ class SongParams {
         makeAutoObservable(this, {}, {deep:false})
     }
 
-    setSongParam(props) {
+    setSong(props) {
         this.song = props;
     }
 

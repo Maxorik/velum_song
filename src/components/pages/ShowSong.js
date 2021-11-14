@@ -2,24 +2,30 @@
  * Форма для просмотра информации о песне
  */
 
-import React from 'react';
+import React, {useState} from 'react';
 import {observer} from 'mobx-react-lite'
 import Lang from "../../settings/lang-ru";
 import Button from '@material-ui/core/Button';
+import Modal from '@material-ui/core/Modal';
+import Box from '@material-ui/core/Box';
 import ChordScheme from "../ui/ChordScheme/ChordScheme";
 import VideoIntegration from "../ui/VideoIntegration/VideoIntegration";
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import songParams from "../store/songParams";
 import songList from "../store/songList";
+import Typography from "@material-ui/core/Typography";
 
 const ShowSong = observer((props) => {
     const songData = props.songData[1];
     const chordsCouplet = songData.chordCouplet.split(' ');
     const chordsChorus = songData.chordChorus.split(' ');
+    const [deleteConfirmModalOpen, setModalOpen] = useState(false);
+    const handleOpen = () => setModalOpen(true);
+    const handleClose = () => setModalOpen(false);
 
     function setEditMode() {
-        songParams.setSongParam(props.songData[1]);
+        songParams.setSong(props.songData[1]);
         songParams.changeParam('songId', props.songData[0]);
         props.setMode();
     }
@@ -44,10 +50,26 @@ const ShowSong = observer((props) => {
                     variant="text"
                     startIcon={<DeleteForeverIcon />}
                     className='small-button'
-                    onClick={deleteSong}
+                    onClick={handleOpen}
                 >
                     {Lang.deleteButton}
                 </Button>
+                <Modal
+                    open={deleteConfirmModalOpen}
+                    onClose={handleClose}
+                    aria-labelledby="modal-modal-title"
+                    aria-describedby="modal-modal-description"
+                >
+                    <Box className='modal-window'>
+                        <Typography id="deleteConfirmModalOpen" component={'span'} className='modal-window-dialog'>
+                            <p>{Lang.langWithParams(Lang.deleteConfirmText, songData.songName)}</p>
+                            <div className='modal-buttons'>
+                                <Button variant="outlined" className='positive-button' onClick={deleteSong}>{Lang.deleteButton}</Button>
+                                <Button variant="text" onClick={handleClose}>{Lang.cancelButton}</Button>
+                            </div>
+                        </Typography>
+                    </Box>
+                </Modal>
             </div>
             <h2>{songData.songName}</h2>
             <pre>{songData.songComment}</pre>
