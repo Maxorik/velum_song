@@ -19,6 +19,7 @@ import ShowSong from "./ShowSong";
 import EditSong from "./EditSong";
 import songList from "../store/songList";
 import global from "../../settings/global";
+import Authentication from "../ui/Authentication/Authentication";
 
 const AllSongList = observer(() => {
     const [editMode, setEditMode] = useState(false);
@@ -43,15 +44,20 @@ const AllSongList = observer(() => {
             {songList.loading ? <Loader/> :
                 !songList.songsInfo || songList.songsInfo.length === 0 ? <p>{Lang.noSongs}</p> :
                 <div className='song-container'>
+
+                    {/*TODO вынести header в отдельный компонент*/}
                     <div className='songlist-header'>
                         <p>{global.product}</p>
-                        <Button
-                            variant="outlined"
-                            startIcon={<AddIcon />}
-                            className='positive-button'
-                            onClick={handleOpen}
-                        >{Lang.addSongButton}
-                        </Button>
+                        <div style={{display: 'flex'}}>
+                            <Button
+                                variant="outlined"
+                                startIcon={<AddIcon />}
+                                className='positive-button'
+                                onClick={handleOpen}
+                            >{Lang.addSongButton}
+                            </Button>
+                            <Authentication/>
+                        </div>
                         <Modal
                             open={modalOpen}
                             onClose={handleClose}

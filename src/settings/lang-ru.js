@@ -42,8 +42,13 @@ const Lang = {
     deleteButton:   'Удалить',
     addSongButton:  'Добавить песню',
 
-    noSongs:        'Список песен пуст',
+    noSongs:           'Список песен пуст',
     deleteConfirmText: 'Действительно хотите удалить {0}?',
+
+    passInput:         'Пароль',
+    invalidPass:       'Неверный пароль',
+    enterPassText:     'Введите пароль для входа',
+    enterButton:       'Войти',
 };
 
 export default Lang;
