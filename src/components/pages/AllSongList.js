@@ -8,28 +8,20 @@ import Accordion from "@material-ui/core/Accordion";
 import AccordionDetails from "@material-ui/core/AccordionDetails";
 import AccordionSummary from '@material-ui/core/AccordionSummary';
 import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import AddIcon from '@material-ui/icons/Add';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import Modal from '@material-ui/core/Modal';
-import Box from '@material-ui/core/Box';
 import Lang from "../../settings/lang-ru";
 import Loader from "../ui/Loader/Loader";
 import ShowSong from "./ShowSong";
 import EditSong from "./EditSong";
 import songList from "../store/songList";
-import global from "../../settings/global";
-import Authentication from "../ui/Authentication/Authentication";
+import Header from "../ui/Header/Header";
 
 const AllSongList = observer(() => {
     const [editMode, setEditMode] = useState(false);
     const [expanded, setExpanded] = useState(false);
-    const [modalOpen, setModalOpen] = useState(false);
     const handleChange = (panel) => (event, isExpanded) => {
         setExpanded(isExpanded ? panel : false);
     };
-    const handleOpen = () => setModalOpen(true);
-    const handleClose = () => setModalOpen(false);
 
     useEffect(() => {
         songList.getSongList();
@@ -44,38 +36,9 @@ const AllSongList = observer(() => {
             {songList.loading ? <Loader/> :
                 !songList.songsInfo || songList.songsInfo.length === 0 ? <p>{Lang.noSongs}</p> :
                 <div className='song-container'>
-
-                    {/*TODO вынести header в отдельный компонент*/}
-                    <div className='songlist-header'>
-                        <p>{global.product}</p>
-                        <div style={{display: 'flex'}}>
-                            <Button
-                                variant="outlined"
-                                startIcon={<AddIcon />}
-                                className='positive-button'
-                                onClick={handleOpen}
-                            >{Lang.addSongButton}
-                            </Button>
-                            <Authentication/>
-                        </div>
-                        <Modal
-                            open={modalOpen}
-                            onClose={handleClose}
-                            aria-labelledby="modal-modal-title"
-                            aria-describedby="modal-modal-description"
-                        >
-                            <Box className='modal-window'>
-                                <Typography id="modal-modal-description" component={'span'}>
-                                    <EditSong
-                                        songData={null}
-                                        setMode={setViewMode}
-                                        key='newsong'
-                                        isModal={handleClose}
-                                    />
-                                </Typography>
-                            </Box>
-                        </Modal>
-                    </div>
+                    <Header
+                        setViewMode={setViewMode}
+                    />
                     {songList.songsInfo.map((song) =>
                         {
                             return (

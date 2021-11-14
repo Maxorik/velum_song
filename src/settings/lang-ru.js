@@ -47,7 +47,7 @@ const Lang = {
 
     passInput:         'Пароль',
     invalidPass:       'Неверный пароль',
-    enterPassText:     'Введите пароль для входа',
+    enterPassText:     'Введите пароль для входа:',
     enterButton:       'Войти',
 };
 

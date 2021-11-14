@@ -69,6 +69,11 @@
     max-width: 180px;
 }
 
+.MuiButton-root.Mui-disabled {
+    color: rgba(0, 0, 0, 0.26) !important;
+    border: none !important;
+}
+
 .chordPanel {
     display: grid;
     width: 400px;
