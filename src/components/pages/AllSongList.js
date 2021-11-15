@@ -32,10 +32,10 @@ const AllSongList = observer(() => {
     }
 
     return(
-        <div>
+        <div className='middle-container' style={{marginBottom: '20px'}}>
             {songList.loading ? <Loader/> :
                 !songList.songsInfo || songList.songsInfo.length === 0 ? <p>{Lang.noSongs}</p> :
-                <div className='song-container'>
+                <div>
                     <Header
                         setViewMode={setViewMode}
                     />

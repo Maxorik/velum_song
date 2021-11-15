@@ -1,4 +1,8 @@
 /* important стили перекрывают библиотеку MUI */
+.middle-container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
 
 .small-input div input {
     width: 3em;
@@ -9,13 +13,13 @@
 .form-view {
     display: flex;
     flex-direction: column;
-    width: 70vw;
+    width: 60vw;
     padding: 20px;
     margin: 0 auto;
 }
 
 .form-view-half {
-    width: 30vw;
+    width: 27vw;
 }
 
 .icon-button {
@@ -87,7 +91,7 @@
 
 .songlist-header {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
     padding: 10px 40px;
 }

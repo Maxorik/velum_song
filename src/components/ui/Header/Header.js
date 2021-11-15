@@ -16,7 +16,6 @@ function Header(props) {
 
     return(
         <div className='songlist-header'>
-            <p>{global.product}</p>
             <div style={{display: 'flex'}}>
                 <Button
                     variant="outlined"
