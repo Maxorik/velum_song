@@ -7,3 +7,6 @@ let appSettings = {
 }
 
 export default appSettings;
+
+
+// TODO переделать под стор mobx

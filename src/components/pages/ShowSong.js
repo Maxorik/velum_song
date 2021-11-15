@@ -5,6 +5,7 @@
 import React, {useState} from 'react';
 import {observer} from 'mobx-react-lite'
 import Lang from "../../settings/lang-ru";
+import global from "../../settings/global";
 import Button from '@material-ui/core/Button';
 import Modal from '@material-ui/core/Modal';
 import Box from '@material-ui/core/Box';
@@ -43,6 +44,7 @@ const ShowSong = observer((props) => {
                     startIcon={<EditIcon />}
                     className='positive-button small-button'
                     onClick={setEditMode}
+                    disabled={!global.isAdmin}
                 >
                     {Lang.editButton}
                 </Button>
@@ -51,6 +53,7 @@ const ShowSong = observer((props) => {
                     startIcon={<DeleteForeverIcon />}
                     className='small-button'
                     onClick={handleOpen}
+                    disabled={!global.isAdmin}
                 >
                     {Lang.deleteButton}
                 </Button>

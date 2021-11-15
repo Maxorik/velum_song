@@ -17,13 +17,13 @@ import LibraryMusicIcon from '@material-ui/icons/LibraryMusic';
 function Authentication() {
     const [openAuthModal, setModalOpen] = useState(false);
     const [password, setPassword] = useState();
-    const [invalidPass, setInvalidPass] = useState(true);
+    const [invalidPass, hideInvalidPass] = useState(true);
     const handleOpen = () => setModalOpen(true);
     const handleClose = () => setModalOpen(false);
 
     useEffect(() => {
-        setPassword(null);
-        setInvalidPass(true);
+        setPassword('');
+        hideInvalidPass(true);
     }, [openAuthModal]);
 
     function onInputPassword(event) {
@@ -38,7 +38,7 @@ function Authentication() {
                 global.isAdmin = true;
             })
             .catch((error) => {
-                setInvalidPass(false);
+                hideInvalidPass(false);
             });
     }
 
