@@ -88,7 +88,7 @@ function ChordScheme(props) {
         }
 
         return (
-            <div style={{marginLeft: '-20px'}}>
+            <div className='chord-scheme'>
                 {!chordData ? null :
                     // TODO параметры viewBox должны масштабироваться
                     <svg width="100" height="100" viewBox="0 0 93 93">

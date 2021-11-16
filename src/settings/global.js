@@ -3,7 +3,8 @@ let appSettings = {
     myEmail:     'gms441@mail.ru',
     lang:        'ru',
     product:     'Velum Song',
-    isAdmin:     false
+    isAdmin:     false,
+    isMobile:    window.navigator.userAgent.toLowerCase().includes("mobi")
 }
 
 export default appSettings;

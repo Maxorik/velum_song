@@ -1,0 +1,26 @@
+/* important стили перекрывают библиотеку MUI */
+
+@media screen and (max-device-width: 400px) {
+    .MuiButtonBase-root {
+        font-size: 0.7em !important;
+    }
+
+    .form-view {
+        width: 100vw;
+        padding: 0;
+    }
+
+    .flex-row-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .chord-scheme {
+        margin-left: -33px;
+    }
+
+    .form-view-half {
+        width: 50vw;
+    }
+}

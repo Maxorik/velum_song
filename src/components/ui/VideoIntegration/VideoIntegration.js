@@ -3,17 +3,21 @@
  */
 
 import React from 'react';
-import './VideoIntegration.css'
+import './VideoIntegration.css';
+import global from "../../../settings/global";
 
 function VideoIntegration(props) {
     const videoCode = props.link.split('=');
     const videoLink = 'https://www.youtube.com/embed/' + videoCode[1];
+    const playerWidth = global.isMobile ? '310' : '560';
+    const playerHeight = global.isMobile ? '190' : '315';
+
     return(
         <div className='videoContainer'>
             {
                 videoCode[1] &&
-                    <iframe width="560"
-                            height="315"
+                    <iframe width ={playerWidth}
+                            height ={playerHeight}
                             src = {videoLink}
                             title=""
                             frameBorder="0"

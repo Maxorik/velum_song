@@ -53,19 +53,22 @@ const AllSongList = observer(() => {
                                         </Typography>
                                     </AccordionSummary>
                                     <AccordionDetails>
-                                        <Typography component={'span'}>
-                                            {
-                                                editMode ? <EditSong
-                                                    songData={song}
-                                                    setMode={setViewMode}
-                                                    key={song[0]}
-                                                /> : <ShowSong
-                                                    songData={song}
-                                                    setMode={setViewMode}
-                                                    key={song[0]}
-                                                />
-                                            }
-                                        </Typography>
+                                        {
+                                            expanded === 'panel' + song[0] &&
+                                            <Typography component={'span'}>
+                                                {
+                                                    editMode ? <EditSong
+                                                        songData={song}
+                                                        setMode={setViewMode}
+                                                        key={song[0]}
+                                                    /> : <ShowSong
+                                                        songData={song}
+                                                        setMode={setViewMode}
+                                                        key={song[0]}
+                                                    />
+                                                }
+                                            </Typography>
+                                        }
                                     </AccordionDetails>
                                 </Accordion>
                             )

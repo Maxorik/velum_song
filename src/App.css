@@ -10,6 +10,10 @@
     text-align: center;
 }
 
+.buttons-container {
+    display: flex;
+}
+
 .form-view {
     display: flex;
     flex-direction: column;
@@ -84,6 +88,10 @@
     grid-template-columns: repeat(4, 100px);
 }
 
+.chord-scheme {
+    margin-left: -20px;
+}
+
 .divider {
     border-left: 1px solid #000;
     margin-right: 20px;
@@ -122,4 +130,9 @@
 
 .modal-buttons {
     margin-left: 100px;
+}
+
+.song-description {
+    max-width: 99vw;
+
 }

@@ -38,7 +38,7 @@ const ShowSong = observer((props) => {
 
     return(
         <div className='form-view'>
-            <div style={{display: 'flex'}}>
+            <div className='buttons-container'>
                 <Button
                     variant="text"
                     startIcon={<EditIcon />}
@@ -75,7 +75,7 @@ const ShowSong = observer((props) => {
                 </Modal>
             </div>
             <h2>{songData.songName}</h2>
-            <pre>{songData.songComment}</pre>
+            <pre className='song-description'>{songData.songComment}</pre>
             <VideoIntegration
                 link={songData.songVideo}
                 key={songData.songVideo}
