@@ -5,18 +5,18 @@
 import {makeAutoObservable} from "mobx";
 
 class SongParams {
-    // модель песни
-    song = {
-        chordCouplet: '',
-        chordChorus: '',
-        songName: '',
-        songComment: '',
-        songText: '',
-        songVideo: '',
-        rhytmCouplet: '',
-        rhytmChorus: '',
-        songId: null
-    };
+    /**
+     * модель песни:
+        chordCouplet - аккорды куплета
+        chordChorus  - аккорды припева
+        songName     - название песни
+        songComment  - комментарий к игре
+        songText     - текст песни
+        songVideo    - ссылка на видео с разбором
+        rhytmCouplet - ритм куплета
+        rhytmChorus  - ритм припева
+        songId
+     */
 
     constructor() {
         makeAutoObservable(this, {}, {deep:false})

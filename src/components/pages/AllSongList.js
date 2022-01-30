@@ -32,7 +32,7 @@ const AllSongList = observer(() => {
     }
 
     return(
-        <div className='middle-container' style={{marginBottom: '20px'}}>
+        <div className='middle-container all_songs'>
             {songList.loading ? <Loader/> :
                 !songList.songsInfo || songList.songsInfo.length === 0 ? <p>{Lang.noSongs}</p> :
                 <div>

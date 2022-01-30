@@ -17,21 +17,7 @@ const EditSongForm = observer((props) => {
     function handleSubmit(event) {
         event && event.preventDefault();
         songList.loading = true;
-
         songParams.song.songId ? songList.changeSong(songParams.song) : songList.addNewSong(songParams.song);
-
-        songParams.setSong({
-            chordCouplet: '',
-            chordChorus: '',
-            songName: '',
-            songComment: '',
-            songText: '',
-            songVideo: '',
-            rhytmCouplet: '',
-            rhytmChorus: '',
-            songId: null
-        });
-
         props.isModal ? props.isModal() : props.setMode();
     }
 

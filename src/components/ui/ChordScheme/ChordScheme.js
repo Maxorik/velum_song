@@ -1,5 +1,6 @@
 /**
  *  Отрисовка аккорда по его названию
+ *  Функция возвращает svg
  *
  *  Принцип отрисовки:
  <circle stroke-width="0.25" stroke="#444" fill="#444" cx="10" cy="30" r="4"></circle>
@@ -21,6 +22,7 @@
 
 import React from 'react';
 import guitarChords from "../../../lib/guitar";
+import './chord_scheme.css'
 
 function ChordScheme(props) {
     const chordsList = guitarChords.chords;                          // список всех гитарных аккордов, разбитый по группам

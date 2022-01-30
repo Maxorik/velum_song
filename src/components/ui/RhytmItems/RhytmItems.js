@@ -12,6 +12,7 @@ import ClearIcon from '@material-ui/icons/Clear';
 import BackspaceIcon from '@material-ui/icons/Backspace';
 import TextField from '@material-ui/core/TextField'
 import Lang from "../../../settings/lang-ru";
+import './rhytm_items.css'
 
 function RhytmItems(props) {
     return (

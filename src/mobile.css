@@ -1,3 +1,4 @@
+/* основной файл стилей для мобильных устройств */
 /* important стили перекрывают библиотеку MUI */
 
 @media screen and (max-device-width: 400px) {

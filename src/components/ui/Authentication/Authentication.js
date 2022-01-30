@@ -13,6 +13,7 @@ import Typography from "@material-ui/core/Typography";
 import PersonIcon from '@material-ui/icons/Person';
 import TextField from "@material-ui/core/TextField";
 import LibraryMusicIcon from '@material-ui/icons/LibraryMusic';
+import './authentication.css'
 
 function Authentication() {
     const [openAuthModal, setModalOpen] = useState(false);
@@ -45,7 +46,7 @@ function Authentication() {
     return (
         <div>
             {
-                global.isAdmin ? <LibraryMusicIcon style={{marginTop:'6px'}}/> :
+                global.isAdmin ? <LibraryMusicIcon className='library-music-icon'/> :
                     <Button
                         variant="outlined"
                         startIcon={<PersonIcon />}
@@ -60,18 +61,18 @@ function Authentication() {
                 aria-describedby="modal-modal-description"
             >
                 <Box className='modal-window'>
-                    <Typography id="authModal" component={'span'} className='modal-window-dialog'>
+                    <Typography id="authModal" component={'span'} className='auth-modal-window-dialog'>
                         <p>{Lang.enterPassText}</p>
                         <TextField
                             label={Lang.passInput}
                             onChange={onInputPassword}
                             value={password}
-                            style={{margin: '0 0 15px 0'}}
+                            className='auth-modal-window-text'
                             type='password'
                         />
                         <p
                             hidden={invalidPass}
-                            style={{color: 'red'}}
+                            className='auth-invalid-pass'
                         >
                             {Lang.invalidPass}
                         </p>

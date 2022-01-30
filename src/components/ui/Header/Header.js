@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import global from "../../../settings/global";
 import Button from "@material-ui/core/Button";
 import AddIcon from "@material-ui/icons/Add";
@@ -8,6 +8,7 @@ import Modal from "@material-ui/core/Modal";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import EditSong from "../../pages/EditSong";
+import './header.css'
 
 function Header(props) {
     const [modalOpen, setModalOpen] = useState(false);
