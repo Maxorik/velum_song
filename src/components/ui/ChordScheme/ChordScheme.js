@@ -52,7 +52,7 @@ function ChordScheme(props) {
         const baseFret = chordScheme.baseFret > 1 ? chordScheme.baseFret: '';  // лад, с которого берется ааккорд
 
         // определяем, в каких местах зажимаются струны
-        // TODO для поддержки укулеле меняется константа i<6 на i<4
+        // TODO для поддержки укулеле меняется константа i<6 на i<4 (кол-во струн)
         for(let i=0; i<6; i++) {
             let position = chordScheme.frets[i];
             strings[i].y = (position + position - 1) * 6;
@@ -80,11 +80,8 @@ function ChordScheme(props) {
         function Jammings() {
             return (
                 chordScheme.frets.map((pos, index) => {
-                    if(pos < 0) {
-                        return (
-                            <text fontSize="0.7rem" fill="#444" fontFamily="Verdana" textAnchor="middle" x={index * 10} y="-2">x</text>
-                        )
-                    }
+                    return pos < 0 ? <text key={pos+index} fontSize="0.7rem" fill="#444" fontFamily="Verdana" textAnchor="middle" x={index * 10} y="-2">x</text>
+                                   : null;
                 })
             )
         }
