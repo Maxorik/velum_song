@@ -60,7 +60,7 @@ function Authentication() {
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
             >
-                <Box className='modal-window'>
+                <Box className='modal-window auth-modal-window'>
                     <Typography id="authModal" component={'span'} className='auth-modal-window-dialog'>
                         <p>{Lang.enterPassText}</p>
                         <TextField

@@ -2,8 +2,13 @@
     margin-top: 6px;
 }
 
+.auth-modal-window {
+    padding: 10px;
+}
+
 .auth-modal-window-text {
-    margin: 0 0 15px 0;
+    margin: -10px 0 15px 0 !important;
+    width: 100%;
 }
 
 .auth-invalid-pass {
