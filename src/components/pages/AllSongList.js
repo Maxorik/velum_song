@@ -14,7 +14,6 @@ import Loader from "../ui/Loader/Loader";
 import ShowSong from "./ShowSong";
 import EditSong from "./EditSong";
 import songList from "../store/songList";
-import Header from "../ui/Header/Header";
 
 const AllSongList = observer(() => {
     const [editMode, setEditMode] = useState(false);
@@ -32,17 +31,19 @@ const AllSongList = observer(() => {
     }
 
     return(
-        <div className='middle-container all_songs'>
+        <div className='middle-container allSongsList'>
             {songList.loading ? <Loader/> :
                 !songList.songsInfo || songList.songsInfo.length === 0 ? <p>{Lang.noSongs}</p> :
                 <div>
-                    <Header
-                        setViewMode={setViewMode}
-                    />
                     {songList.songsInfo.map((song) =>
                         {
                             return (
-                                <Accordion key={song[0]} expanded={expanded === 'panel' + song[0]} onChange={handleChange('panel' + song[0])}>
+                                <Accordion
+                                    key={song[0]}
+                                    expanded={expanded === 'panel' + song[0]}
+                                    onChange={handleChange('panel' + song[0])}
+                                    className='text-container'
+                                >
                                     <AccordionSummary
                                         expandIcon={<ExpandMoreIcon />}
                                         aria-controls="panel1bh-content"

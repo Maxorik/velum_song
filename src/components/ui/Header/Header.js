@@ -10,7 +10,7 @@ import Typography from "@material-ui/core/Typography";
 import EditSong from "../../pages/EditSong";
 import './header.css'
 
-function Header(props) {
+function Header() {
     const [modalOpen, setModalOpen] = useState(false);
     const handleOpen = () => setModalOpen(true);
     const handleClose = () => setModalOpen(false);
@@ -38,7 +38,7 @@ function Header(props) {
                     <Typography id="modal-modal-description" component={'span'}>
                         <EditSong
                             songData={null}
-                            setMode={props.setViewMode}
+                            isNewSong
                             key='newsong'
                             isModal={handleClose}
                         />

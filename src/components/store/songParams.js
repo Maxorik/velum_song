@@ -15,6 +15,7 @@ class SongParams {
         songVideo: '',      // ссылка на видео с разбором
         rhytmCouplet: '',   // ритм куплета
         rhytmChorus: '',    // ритм припева
+        tags: '',           // теги трека
         songId: null
     };
 

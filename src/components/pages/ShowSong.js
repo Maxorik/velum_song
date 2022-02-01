@@ -51,7 +51,7 @@ const ShowSong = observer((props) => {
                 <Button
                     variant="text"
                     startIcon={<DeleteForeverIcon />}
-                    className='small-button'
+                    className='small-button negative-button'
                     onClick={handleOpen}
                     disabled={!global.isAdmin}
                 >

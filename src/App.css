@@ -1,6 +1,13 @@
 /* основной файл, содержащий общие для проекта стили */
 /* important стили перекрывают библиотеку MUI */
 
+/*TODO декомпозировать стили*/
+
+.App {
+    background-color: #202124;
+    display: flow-root;
+}
+
 .middle-container {
     max-width: 1000px;
     margin: 0 auto;
@@ -62,8 +69,13 @@
 }
 
 .positive-button {
-    color: #153606 !important;
+    color: #fc6c05 !important;
     margin-right: 4px !important;
+    border: 1px solid #e8eaed !important;
+}
+
+.negative-button {
+    color: #e8eaed !important;
 }
 
 .small-button {
@@ -82,7 +94,7 @@
 }
 
 .divider {
-    border-left: 1px solid #000;
+    border-left: 1px solid #e8eaed;
     margin-right: 20px;
 }
 
@@ -118,6 +130,37 @@
     max-width: 99vw;
 }
 
-.all_songs {
-    margin-top: 20px;
+.allSongsList {
+    margin: 10px auto;
+}
+
+.text-container {
+    background-color: #202124 !important;
+    color: #e8eaed !important;
+}
+
+.MuiSvgIcon-root {
+    fill: #e8eaed !important;
+}
+
+.MuiAccordion-root:before {
+    background-color: #e8eaed !important;
+}
+
+.MuiPaper-elevation1{
+    box-shadow: none !important;
+    border: 1px solid #e8eaed;
+}
+
+.MuiFormLabel-root, .MuiInputBase-root, .MuiFormHelperText-root {
+    color: #e8eaed !important;
+}
+
+.MuiButton-root.Mui-disabled {
+    color: #e8eaed !important;
+    opacity: 0.4;
+}
+
+.MuiInput-underline:before {
+    border-bottom: 1px solid #e8eaed !important;
 }

@@ -4,6 +4,8 @@
 
 .auth-modal-window {
     padding: 10px;
+    background-color: #202124 !important;
+    color: #e8eaed !important;
 }
 
 .auth-modal-window-text {

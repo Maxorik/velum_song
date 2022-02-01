@@ -78,7 +78,7 @@ function Authentication() {
                         </p>
                         <div className='modal-buttons'>
                             <Button variant="outlined" className='positive-button' onClick={login}>{Lang.enterButton}</Button>
-                            <Button variant="text" onClick={handleClose}>{Lang.cancelButton}</Button>
+                            <Button variant="text" onClick={handleClose} className='negative-button'>{Lang.cancelButton}</Button>
                         </div>
                     </Typography>
                 </Box>

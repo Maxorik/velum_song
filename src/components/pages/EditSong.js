@@ -14,23 +14,13 @@ import songParams from "../store/songParams";
 import songList from "../store/songList";
 
 const EditSongForm = observer((props) => {
+    // TODO проверить добавление
+    songParams.song = props.isNewSong ? {} : songParams.song;
+
     function handleSubmit(event) {
         event && event.preventDefault();
         songList.loading = true;
         songParams.song.songId ? songList.changeSong(songParams.song) : songList.addNewSong(songParams.song);
-
-        // songParams.setSong({
-        //     chordCouplet: '',
-        //     chordChorus: '',
-        //     songName: '',
-        //     songComment: '',
-        //     songText: '',
-        //     songVideo: '',
-        //     rhytmCouplet: '',
-        //     rhytmChorus: '',
-        //     songId: null
-        // });
-
         props.isModal ? props.isModal() : props.setMode();
     }
 
@@ -135,7 +125,10 @@ const EditSongForm = observer((props) => {
                         <div className='form-buttons-container'>
                             <Button variant="outlined" className='positive-button' onClick={handleSubmit}
                                     type="submit">{Lang.saveButton}</Button>
-                            <Button variant="text" onClick={cancelEdit}>{Lang.cancelButton}</Button>
+                            <Button variant="text"
+                                    onClick={cancelEdit}
+                                    className='negative-button'
+                            >{Lang.cancelButton}</Button>
                         </div>
                     }
                 </form>
