@@ -1,0 +1,27 @@
+/* изменение стилей компонентов, созданных MUI-библиотекой */
+
+.MuiSvgIcon-root {
+    fill: #e8eaed !important;
+}
+
+.MuiAccordion-root:before {
+    background-color: #e8eaed !important;
+}
+
+.MuiPaper-elevation1{
+    box-shadow: none !important;
+    border: 1px solid #e8eaed;
+}
+
+.MuiFormLabel-root, .MuiInputBase-root, .MuiFormHelperText-root {
+    color: #e8eaed !important;
+}
+
+.MuiButton-root.Mui-disabled {
+    color: #e8eaed !important;
+    opacity: 0.4;
+}
+
+.MuiInput-underline:before {
+    border-bottom: 1px solid #e8eaed !important;
+}

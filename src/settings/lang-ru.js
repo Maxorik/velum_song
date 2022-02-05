@@ -9,6 +9,7 @@ const Lang = {
     },
 
     addSongTitle:   'Добавить песню',
+    editSongTitle:  'Редактировать песню',
     coupletTitle:   'Куплет',
     chorusTitle:    'Припев',
 

@@ -14,6 +14,8 @@ import songParams from "../store/songParams";
 import songList from "../store/songList";
 
 const EditSongForm = observer((props) => {
+    const title = props.isNewSong ? Lang.addSongTitle : Lang.editSongTitle;
+
     // TODO проверить добавление
     songParams.song = props.isNewSong ? {} : songParams.song;
 
@@ -52,7 +54,7 @@ const EditSongForm = observer((props) => {
 
     return (<div>
                 <form className='form-view' onSubmit={handleSubmit}>
-                    <h3>{Lang.addSongTitle}</h3>
+                    <h3 className='subtitle'>{title}</h3>
                     <TextField
                         label={Lang.songName}
                         className='mt-3'
@@ -70,7 +72,7 @@ const EditSongForm = observer((props) => {
                     />
                     <div className='mt-5 flex-row-container'>
                         <div>
-                            <h5>{Lang.coupletTitle}</h5>
+                            <h5 className='subtitle'>{Lang.coupletTitle}</h5>
                             <TextField
                                 name="chordCouplet"
                                 label={Lang.chordCouplet}
@@ -86,7 +88,7 @@ const EditSongForm = observer((props) => {
                             />
                         </div>
                         <div className='form-view-half'>
-                            <h5>{Lang.chorusTitle}</h5>
+                            <h5 className='subtitle'>{Lang.chorusTitle}</h5>
                             <TextField
                                 name="chordChorus"
                                 label={Lang.chordChorus}

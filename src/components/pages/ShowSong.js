@@ -74,7 +74,7 @@ const ShowSong = observer((props) => {
                     </Box>
                 </Modal>
             </div>
-            <h2>{songData.songName}</h2>
+            <h2 className='subtitle mt-3'>{songData.songName}</h2>
             <pre className='song-description'>{songData.songComment}</pre>
             <VideoIntegration
                 link={songData.songVideo}
@@ -82,7 +82,7 @@ const ShowSong = observer((props) => {
             />
             <div className='mt-5 flex-row-container'>
                 <div>
-                    <h5>{Lang.coupletTitle}</h5>
+                    <h5 className='subtitle'>{Lang.coupletTitle}</h5>
                     <p>{songData.rhytmCouplet}</p>
                     <div className='chordPanel'>
                         {chordsCouplet.map((chord, index) => {
@@ -97,7 +97,7 @@ const ShowSong = observer((props) => {
                 </div>
                 <div className='divider'></div>
                 <div className='form-view-half'>
-                    <h5>{Lang.chorusTitle}</h5>
+                    <h5 className='subtitle'>{Lang.chorusTitle}</h5>
                     <p>{songData.rhytmChorus}</p>
                     <div className='chordPanel'>
                         {chordsChorus.map((chord, index) => {

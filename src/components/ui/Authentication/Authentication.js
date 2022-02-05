@@ -37,6 +37,7 @@ function Authentication() {
             .then((userCredential) => {
                 handleClose();
                 global.isAdmin = true;
+                document.cookie = "isAdmin=true; max-age=2147483647";
             })
             .catch((error) => {
                 hideInvalidPass(false);
@@ -62,7 +63,7 @@ function Authentication() {
             >
                 <Box className='modal-window auth-modal-window'>
                     <Typography id="authModal" component={'span'} className='auth-modal-window-dialog'>
-                        <p>{Lang.enterPassText}</p>
+                        <p className='subtitle'>{Lang.enterPassText}</p>
                         <TextField
                             label={Lang.passInput}
                             onChange={onInputPassword}

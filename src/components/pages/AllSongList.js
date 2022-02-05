@@ -48,8 +48,9 @@ const AllSongList = observer(() => {
                                         expandIcon={<ExpandMoreIcon />}
                                         aria-controls="panel1bh-content"
                                         id="panel1bh-header"
+                                        className='no-margin'
                                     >
-                                        <Typography sx={{ width: '33%', flexShrink: 0 }}>
+                                        <Typography sx={{ width: '33%', flexShrink: 0 }} className='subtitle header-cool-font'>
                                             {song[1].songName}
                                         </Typography>
                                     </AccordionSummary>

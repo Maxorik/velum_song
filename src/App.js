@@ -1,5 +1,7 @@
-import './App.css'
-import './mobile.css'
+import './styles/App.css'
+import './styles/mobile.css'
+import './styles/overridesMUI.css'
+import './styles/scrollbar.css'
 import React from 'react'
 import AllSongList from "./components/pages/AllSongList";
 import Header from "./components/ui/Header/Header";

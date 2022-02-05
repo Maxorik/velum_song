@@ -3,6 +3,13 @@
 
 /*TODO декомпозировать стили*/
 
+@font-face {
+font-family: "MarckScript";
+src: url("../fonts/MarckScript.ttf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+
 .App {
     background-color: #202124;
     display: flow-root;
@@ -139,28 +146,15 @@
     color: #e8eaed !important;
 }
 
-.MuiSvgIcon-root {
-    fill: #e8eaed !important;
+.subtitle {
+    color: #fc6c05;
 }
 
-.MuiAccordion-root:before {
-    background-color: #e8eaed !important;
+.no-margin > div {
+    margin: 0 !important;
 }
 
-.MuiPaper-elevation1{
-    box-shadow: none !important;
-    border: 1px solid #e8eaed;
-}
-
-.MuiFormLabel-root, .MuiInputBase-root, .MuiFormHelperText-root {
-    color: #e8eaed !important;
-}
-
-.MuiButton-root.Mui-disabled {
-    color: #e8eaed !important;
-    opacity: 0.4;
-}
-
-.MuiInput-underline:before {
-    border-bottom: 1px solid #e8eaed !important;
+.header-cool-font {
+    font-family: "MarckScript" !important;
+    font-size: 1.5em !important;
 }

@@ -34,8 +34,8 @@ function Header() {
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
             >
-                <Box className='modal-window'>
-                    <Typography id="modal-modal-description" component={'span'}>
+                <Box className='modal-window text-container'>
+                    <Typography id="modal-modal-description" component={'span'} className='text-container'>
                         <EditSong
                             songData={null}
                             isNewSong
