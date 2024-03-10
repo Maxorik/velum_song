@@ -76,7 +76,7 @@ src: url("../fonts/MarckScript.ttf") format("truetype");
 }
 
 .positive-button {
-    color: #fc6c05 !important;
+    color: #b1b1b1 !important;
     margin-right: 4px !important;
     border: 1px solid #e8eaed !important;
 }
@@ -147,7 +147,7 @@ src: url("../fonts/MarckScript.ttf") format("truetype");
 }
 
 .subtitle {
-    color: #fc6c05;
+    color: #b1b1b1;
 }
 
 .no-margin > div {
